@@ -9,7 +9,6 @@
     system = "x86_64-linux"; 
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    packages.${system}.default = self.site;
     site = pkgs.stdenv.mkDerivation {
       pname = "giraffic-jams-site";
       version = "0.0.1";
