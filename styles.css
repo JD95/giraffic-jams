@@ -7,22 +7,26 @@ html, body {
   position: relative;
 }
 
-.stars {
+#stars {
   overflow: hidden;
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background: transparent;
-    background-image: 
-    radial-gradient(2px 2px at 20px 30px, #222, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 40px 70px, #111, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 50px 160px, #333, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 90px 40px, #222, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 130px 80px, #111, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 160px 120px, #111, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 200px 200px;
   z-index: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  opacity: var(--brightness);
+  animation: twinkle var(--twinkle-duration) ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: calc(var(--brightness) * 0.4); }
+  100% { opacity: calc(var(--brightness)); }
 }
 
 .solar-system {
@@ -47,8 +51,8 @@ html, body {
 
 .orbit {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
   width: calc(var(--radius, 400px) * 2);
   height: calc(var(--radius, 400px) * 2);
   border-radius: 50%;

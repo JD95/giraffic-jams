@@ -8,70 +8,96 @@
 </head>
 <body>
 
-  <div class="stars" />
+  <div id="stars"></div>
 
   <div class="solar-system">
-    <div class="sun"/>
+    <div class="sun"></div>
 
     <div class="mercury">
       <div class="orbit">
-        <div class="planet"/>
-        </div>
+        <div class="planet"></div>
       </div>
     </div>
 
     <div class="venus">
       <div class="orbit">
-        <div class="planet"/>
-        </div>
+        <div class="planet"></div>
       </div>
     </div>
 
     <div class="earth">
       <div class="orbit">
-        <div class="planet"/>
-        </div>
+        <div class="planet"></div>
       </div>
     </div>
 
     <div class="mars">
       <div class="orbit">
-        <div class="planet"/>
-        </div>
+        <div class="planet"></div>
       </div>
     </div>
 
     <div class="jupiter">
       <div class="orbit">
-        <div class="planet"/>
-        </div>
+        <div class="planet"></div>
       </div>
     </div>
 
     <div class="saturn">
       <div class="orbit">
-        <div class="planet"/>
-        </div>
+        <div class="planet"></div>
       </div>
     </div>
 
     <div class="uranus">
       <div class="orbit">
-        <div class="planet"/>
-        </div>
+        <div class="planet"></div>
       </div>
     </div>
 
     <div class="neptune">
       <div class="orbit">
-        <div class="planet"/>
-        </div>
+        <div class="planet"></div>
       </div>
     </div>
   </div>
 
-
   <main role="main">
   </main>
+  <script>
+    function createStars(count = 300) {
+      const container = document.getElementById("stars");
+      container.innerHTML = "";
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+    
+      for (let i = 0; i < count; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+    
+        const size = Math.random() * 2 + 1;              // 1–3px
+        const x = Math.random() * width;                 // random horizontal position
+        const y = Math.random() * height;                // random vertical position
+        const brightness = Math.random() * 0.8 + 0.2;    // 0.2–1 opacity
+        const twinkle = (Math.random() * 2 + 1) + "s";   // 1–3s twinkle
+    
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.left = `${x}px`;
+        star.style.top = `${y}px`;
+    
+        star.style.setProperty("--brightness", brightness);
+        star.style.setProperty("--twinkle-duration", twinkle);
+    
+        container.appendChild(star);
+      }
+    }
+    
+    createStars();
+
+    window.addEventListener("resize", () => {
+      createStars();
+    });
+  </script>
 </body>
 </html>
